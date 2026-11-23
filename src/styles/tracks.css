@@ -1,0 +1,78 @@
+.tracks {
+  margin-top: clamp(54px, 7vw, 92px);
+  text-align: center;
+}
+.track-options {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid #51453c;
+  border-radius: 8px;
+  background: linear-gradient(#25221fe8, #181614e8);
+  box-shadow: inset 0 2px 4px #0007, 0 1px 0 #ffffff21;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(28px, 3.3vw, 44px) auto 0;
+}
+.track-highlight {
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 0;
+  width: calc(100% / 3);
+  border: 1px solid #bf7644;
+  border-bottom: 2px solid var(--text-orange);
+  border-radius: 7px;
+  background: linear-gradient(#725038, #473021 52%, #50301d);
+  box-shadow: inset 0 2px 0 #ffdaac48, inset 0 -2px 1px #20110799, 0 1px 3px #0005;
+  pointer-events: none;
+}
+.track-options button {
+  display: grid;
+  justify-items: center;
+  gap: clamp(10px, 1.8svh, 20px);
+  padding: 12px 4px clamp(16px, 2.5svh, 28px);
+  color: inherit;
+  border-radius: 7px;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.2vw, 2.5rem);
+}
+.track-options button + button { border-inline-start: 1px solid #ffffff0d; }
+.track-options button:active { box-shadow: var(--control-pressed); }
+.track-options svg { width: clamp(56px, 9vw, 108px); height: auto; }
+.track-options button[aria-pressed="true"] {
+  border-color: transparent;
+  color: var(--text-orange);
+}
+/* Overlay the options so the awards stay put when the description changes. */
+.track-description {
+  display: grid;
+  align-items: center;
+  margin: clamp(22px, 3.6svh, 42px) auto 0;
+  line-height: 1.65;
+  font-size: inherit;
+}
+.track-description p { grid-area: 1 / 1; }
+.track-description p[aria-hidden="true"] { visibility: hidden; }
+.award-entry {
+  margin-top: clamp(32px, 4vw, 52px);
+  border-top: 1px solid #ffffff26;
+  padding-top: clamp(24px, 3vw, 38px);
+}
+.award-entry p + p { margin-top: 1em; }
+@media (hover: hover) {
+  .track-options button[aria-pressed="false"]:hover {
+    background: linear-gradient(#45403b, #2d2926);
+    box-shadow: inset 0 0 0 1px #8a796c, inset 0 2px 0 #ffffff20;
+  }
+}
+.track-options button:active svg { translate: 0 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .track-highlight { transition: transform 300ms cubic-bezier(.22,.7,.25,1); }
+  .track-description p[aria-hidden="false"] { animation: track-appear 200ms ease-out; }
+  .track-options button:is(:hover, :focus-visible, [aria-pressed="true"]) .track-pulse { stroke-dasharray: 1; animation: trace-pulse 650ms ease-out; }
+  .track-options button:is(:hover, :focus-visible, [aria-pressed="true"]) .track-pages { animation: turn-page 480ms ease-out; transform-origin: center; }
+  .track-options button:is(:hover, :focus-visible, [aria-pressed="true"]) .agent-eyes { animation: agent-glance 650ms ease-in-out; }
+}
+@keyframes track-appear { from { opacity: 0; transform: translateY(4px); } }
+@keyframes trace-pulse { from { stroke-dashoffset: 1; } }
+@keyframes turn-page { from { transform: scaleX(0.25); opacity: 0; } }
+@keyframes agent-glance { 45%, 65% { transform: translateX(2px); } }
