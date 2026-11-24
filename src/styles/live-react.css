@@ -1,0 +1,40 @@
+.campus-map[hidden] { display: none; }
+.schedule-event { color: var(--text-white); text-align: left; }
+.schedule-event-title {
+  margin: 0 0 2px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: clamp(.74rem, 1.35vw, .94rem);
+  line-height: 1.15;
+}
+.schedule-event.is-tiny .schedule-event-title {
+  -webkit-line-clamp: 1;
+  font-size: clamp(.72rem, 1.35vw, .84rem);
+  line-height: 1;
+}
+.schedule-event-time, .schedule-event-location {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: clamp(.64rem, 1.15vw, .76rem);
+  line-height: 1.25;
+}
+.schedule-event-time { color: var(--text-muted); }
+.live-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  padding: 0;
+  color: var(--text-white);
+  width: min(560px, calc(100% - 28px));
+}
+.live-dialog::backdrop { background: #000b; backdrop-filter: blur(8px); }
+.live-dialog-content { padding: 24px; }
+body:has(.live-dialog[open]) { overflow: hidden; }
+@media (max-width: 580px) {
+  .schedule-modal-card .schedule-modal-kicker, .schedule-modal-card h2 { padding-right: 0; }
+  .schedule-modal-card .live-dialog-content { padding-top: 62px; }
+}
