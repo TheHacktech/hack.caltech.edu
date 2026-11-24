@@ -5,7 +5,7 @@ export const sponsorPacket = siteUrl('2027/hacktech-2027-sponsorship-packet.pdf'
 export const stats = [
   { count: 5, suffix: '+', label: 'countries' },
   { count: 60, suffix: '+', label: 'universities' },
-  { count: 400, suffix: '+', label: 'hackers' },
+  { count: 350, suffix: '+', label: 'hackers' },
   { count: 30, suffix: '+', label: 'prizes' },
   { count: 36, suffix: '', label: 'hours' },
 ];

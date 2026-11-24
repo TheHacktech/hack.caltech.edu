@@ -68,7 +68,7 @@ export function Footer({ openInterest }: { openInterest: () => void }) {
                 </a>
               </li>
               <li>
-                <a href="https://github.com/teamhacktech/teamhacktech.github.io" className="footer-link">
+                <a href="https://github.com/TheHacktech/hack.caltech.edu-old" className="footer-link">
                   Old Website
                 </a>
               </li>

@@ -10,7 +10,7 @@ import { InquiryDialog } from './InquiryDialog';
 import { InterestDialog } from './InterestDialog';
 import { Sponsors } from './Sponsors';
 import { goToSection, openLegacySection } from './sectionNavigation';
-import { enableProductionWidgets } from './productionWidgets';
+import { enableProductionAnalytics } from './productionAnalytics';
 import '../styles/style.css';
 import '../styles/gallery.css';
 import '../styles/touchups.css';
@@ -48,4 +48,4 @@ function HomePage() {
 }
 
 mount(<HomePage />);
-enableProductionWidgets();
+enableProductionAnalytics();
