@@ -91,6 +91,9 @@ code {
 }
 
 .live-brand {
+  padding: 0;
+  border: 0;
+  background: transparent;
   width: clamp(136px, 19vw, 205px);
 }
 

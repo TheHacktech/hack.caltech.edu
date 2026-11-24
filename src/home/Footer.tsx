@@ -1,6 +1,7 @@
 import { siteUrl } from '../components/siteUrl';
 import { createElement, useEffect, useState } from 'react';
 import { sponsorPacket } from './content';
+import { goToSection } from './sectionNavigation';
 
 const socialLinks = [
   { name: 'Facebook', icon: 'logo-facebook', href: 'https://www.facebook.com/thehacktech/' },
@@ -34,9 +35,9 @@ export function Footer({ openInterest }: { openInterest: () => void }) {
       <div className="section footer-top">
         <div className="container">
           <div className="footer-brand">
-            <a href="#top" className="logo-footer">
+            <button type="button" className="logo-footer" onClick={() => goToSection('home')}>
               <img src={siteUrl('images/logo.svg')} width="75" loading="lazy" alt="Hacktech home" />
-            </a>
+            </button>
             <ul className="social-list">
               {socialLinks.map(({ name, href, icon }) => (
                 <li key={name}>
@@ -130,8 +131,9 @@ export function PageUtilities() {
 
   return (
     <>
-      <a
-        href="#top"
+      <button
+        type="button"
+        onClick={() => goToSection('home')}
         className={showBackTop ? 'back-top-btn active' : 'back-top-btn'}
         aria-label="Back to top"
         tabIndex={showBackTop ? 0 : -1}
@@ -149,7 +151,7 @@ export function PageUtilities() {
         >
           <path d="M12 20V4m-7 7 7-7 7 7" />
         </svg>
-      </a>
+      </button>
     </>
   );
 }

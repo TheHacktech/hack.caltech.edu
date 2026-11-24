@@ -1,11 +1,12 @@
 import { siteUrl } from '../components/siteUrl';
 import { useEffect, useRef, useState } from 'react';
+import { goToSection } from './sectionNavigation';
 
 const navigation = [
-  ['#home', 'home'],
-  ['#about', 'about'],
-  ['#sponsor', 'sponsors'],
-  ['#faq', 'faq'],
+  ['home', 'home'],
+  ['about', 'about'],
+  ['sponsor', 'sponsors'],
+  ['faq', 'faq'],
 ];
 
 export function Header() {
@@ -35,6 +36,11 @@ export function Header() {
     };
   }, [open]);
 
+  function navigate(id: string) {
+    setOpen(false);
+    goToSection(id);
+  }
+
   return (
     <header ref={header} className="header">
       <div className="container">
@@ -51,20 +57,20 @@ export function Header() {
               alt="Major League Hacking 2026 Hackathon Season"
             />
           </a>
-          <a className="logo" href="#home" onClick={() => setOpen(false)}>
+          <button type="button" className="logo" onClick={() => navigate('home')}>
             <img src={siteUrl('images/logo.webp')} className="logo-img" alt="Hacktech home" />
-          </a>
+          </button>
           <nav
             className={open ? 'navbar active' : 'navbar'}
             id="primary-navigation"
             aria-label="Main navigation"
           >
             <ul className="navbar-list">
-              {navigation.map(([href, label]) => (
-                <li className="navbar-item" key={href}>
-                  <a href={href} className="navbar-link" onClick={() => setOpen(false)}>
+              {navigation.map(([id, label]) => (
+                <li className="navbar-item" key={id}>
+                  <button type="button" className="navbar-link" onClick={() => navigate(id)}>
                     {label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

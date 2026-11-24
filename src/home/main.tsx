@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Particles } from '../components/Particles';
 import { mount } from '../components/mount';
 import { About } from './About';
@@ -9,6 +9,7 @@ import { Hero } from './Hero';
 import { InquiryDialog } from './InquiryDialog';
 import { InterestDialog } from './InterestDialog';
 import { Sponsors } from './Sponsors';
+import { goToSection, openLegacySection } from './sectionNavigation';
 import { enableProductionWidgets } from './productionWidgets';
 import '../styles/style.css';
 import '../styles/gallery.css';
@@ -18,14 +19,15 @@ import '../styles/home-dialog.css';
 
 function HomePage() {
   const [dialog, setDialog] = useState<'interest' | 'inquiry' | null>(null);
+  useEffect(openLegacySection, []);
   const openInterest = () => setDialog('interest');
   const closeDialog = () => setDialog(null);
 
   return (
     <>
-      <a className="skip-link" href="#main-content">
+      <button type="button" className="skip-link" onClick={() => goToSection('main-content')}>
         Skip to content
-      </a>
+      </button>
       <Particles prominent />
       <Header />
       <main id="main-content" tabIndex={-1}>

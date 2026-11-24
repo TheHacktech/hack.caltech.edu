@@ -119,17 +119,14 @@ function LivePage() {
     <>
       <header className="live-header">
         <div className="brand-lockup">
-          <a
+          <button
+            type="button"
             className="live-brand"
-            href="#home"
             aria-label="Hacktech live home"
-            onClick={(event) => {
-              event.preventDefault();
-              showView('home');
-            }}
+            onClick={() => showView('home')}
           >
             <img src={siteUrl('images/logo-text.svg')} alt="Hacktech" />
-          </a>
+          </button>
           <div className="live-indicator" aria-label="Live site status">
             <span className="live-dot" aria-hidden="true" />
             <span>Live</span>

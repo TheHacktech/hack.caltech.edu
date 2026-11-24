@@ -29,6 +29,8 @@
   background: var(--bg-oxford-orange);
 }
 .home-page .navbar-link {
+  width: 100%;
+  text-align: start;
   transition: color 150ms ease;
 }
 .home-page .navbar-link:is(:hover, :focus-visible) {
