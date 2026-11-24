@@ -26,7 +26,7 @@ export function Hero({ openInterest, openInquiry }: HeroProps) {
           <div className="btn-wrapper">
             <button
               type="button"
-              className="btn"
+              className="btn action-button"
               aria-haspopup="dialog"
               aria-controls="hacker-interest"
               onClick={openInterest}
@@ -39,7 +39,7 @@ export function Hero({ openInterest, openInquiry }: HeroProps) {
           </div>
           <button
             type="button"
-            className="btn"
+            className="btn action-button"
             aria-haspopup="dialog"
             aria-controls="application-modal"
             onClick={openInquiry}

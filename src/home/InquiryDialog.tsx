@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Dialog } from '../components/Dialog';
+import { HomeDialog } from './HomeDialog';
 import { googleForm, mapFormFields, prefillForm, useGoogleForm } from '../components/googleForms';
 import { sponsorPacket } from './content';
 
@@ -34,7 +34,7 @@ const forms = {
 type Role = keyof typeof forms;
 
 function InquiryForm({ role, onBack }: { role: Role; onBack: () => void }) {
-  const { form, entries, title, companyLabel, message } = forms[role];
+  const { form, entries, companyLabel, message } = forms[role];
   const { state, submit } = useGoogleForm(form.submit);
   const [fallback, setFallback] = useState(form.respond);
 
@@ -50,75 +50,67 @@ function InquiryForm({ role, onBack }: { role: Role; onBack: () => void }) {
       <button className="inquiry-back" type="button" onClick={onBack}>
         ← Choose a different role
       </button>
-      <h2>{title}</h2>
-      {role === 'sponsor' ? (
-        <div className="bullet-points">
-          <ul>
-            <li>Introduce your product or platform to 1000+ student developers</li>
-            <li>Recruit from an elite pool of software developers and engineers</li>
-            <li>Increase your brand's visibility through Hacktech media channels/events</li>
-            <li>Facilitate interaction between participants and your employees &amp; brand</li>
-          </ul>
-          <a href={sponsorPacket} className="footer-link" target="_blank" rel="noopener">
-            Click Here for our tentative 2026 Sponsorship Packet!
-          </a>
-        </div>
-      ) : (
-        <div className="bullet-points">
-          <p>
-            For our 2026 iteration, we are looking for judges who are passionate about technology,
-            innovation and helping aspiring students. Note that spots are limited, and priority will be
-            given to standout individuals, or sponsor company judges. If you are a sponsor looking to
-            send judges, please review/fill out the sponsor form.
-          </p>
-          <p>
-            Interested in learning more or chatting about Hacktech? Connect with one of our Directors -
-            we'd love to hear from you!
-          </p>
-        </div>
-      )}
-      {state === 'sent' ? (
-        <p role="status">Your inquiry has been sent. Thanks for your interest!</p>
-      ) : (
-        <form onSubmit={send} aria-busy={state === 'sending'}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            aria-label="Full name"
-            autoComplete="name"
-            required
-          />
-          <input
-            type="text"
-            name="company"
-            placeholder={companyLabel}
-            aria-label={companyLabel}
-            autoComplete="organization"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            aria-label="Email address"
-            autoComplete="email"
-            required
-          />
-          <textarea name="inquiry" placeholder={message} aria-label={message} required />
-          <button type="submit" className="submit-btn" disabled={state === 'sending'}>
-            {state === 'sending' ? 'Sending…' : 'Submit'}
-          </button>
-          {state === 'error' && (
-            <p role="status">
-              We couldn’t confirm that your inquiry was sent.{' '}
-              <a href={fallback} target="_blank" rel="noopener">
-                Finish in Google Forms ↗
-              </a>
+      <div className="inquiry-layout">
+        {role === 'sponsor' ? (
+          <div className="inquiry-details">
+            <ul>
+              <li>Introduce your product or platform to 1000+ student developers</li>
+              <li>Recruit from an elite pool of software developers and engineers</li>
+              <li>Increase your brand's visibility through Hacktech media channels/events</li>
+              <li>Facilitate interaction between participants and your employees &amp; brand</li>
+            </ul>
+            <a href={sponsorPacket} className="packet-link" target="_blank" rel="noopener">
+              Click Here for our tentative 2026 Sponsorship Packet!
+            </a>
+          </div>
+        ) : (
+          <div className="inquiry-details">
+            <p>
+              For our 2026 iteration, we are looking for judges who are passionate about technology,
+              innovation and helping aspiring students. Note that spots are limited, and priority will be
+              given to standout individuals, or sponsor company judges. If you are a sponsor looking to
+              send judges, please review/fill out the sponsor form.
             </p>
-          )}
-        </form>
-      )}
+            <p>
+              Interested in learning more or chatting about Hacktech? Connect with one of our Directors -
+              we'd love to hear from you!
+            </p>
+          </div>
+        )}
+        {state === 'sent' ? (
+          <p role="status">Your inquiry has been sent. Thanks for your interest!</p>
+        ) : (
+          <form onSubmit={send} aria-busy={state === 'sending'}>
+            <label>
+              Full Name
+              <input type="text" name="name" aria-label="Full name" autoComplete="name" required />
+            </label>
+            <label>
+              {companyLabel}
+              <input type="text" name="company" aria-label={companyLabel} autoComplete="organization" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" aria-label="Email address" autoComplete="email" required />
+            </label>
+            <label>
+              {message}
+              <textarea name="inquiry" aria-label={message} required />
+            </label>
+            <button type="submit" className="btn action-button" disabled={state === 'sending'}>
+              {state === 'sending' ? 'Sending…' : 'Submit'}
+            </button>
+            {state === 'error' && (
+              <p role="status">
+                We couldn’t confirm that your inquiry was sent.{' '}
+                <a href={fallback} target="_blank" rel="noopener">
+                  Finish in Google Forms ↗
+                </a>
+              </p>
+            )}
+          </form>
+        )}
+      </div>
     </>
   );
 }
@@ -132,33 +124,26 @@ export function InquiryDialog({ open, onClose }: { open: boolean; onClose: () =>
   }
 
   return (
-    <Dialog
+    <HomeDialog
       id="application-modal"
-      className="inquiry-dialog"
       open={open}
       onClose={close}
-      label="Sponsor or judge inquiry"
+      closeLabel="Close inquiry"
+      title={role ? forms[role].title : 'Select your role below:'}
+      view={role ?? 'choose'}
     >
-      <div className="modal-content">
-        <button type="button" className="close" aria-label="Close inquiry" onClick={close}>
-          ×
-        </button>
-        {role ? (
-          <InquiryForm role={role} onBack={() => setRole(null)} />
-        ) : (
-          <>
-            <h2>Select your role below:</h2>
-            <div className="role-buttons">
-              <button type="button" onClick={() => setRole('sponsor')} className="btn">
-                Sponsor
-              </button>
-              <button type="button" onClick={() => setRole('judge')} className="btn">
-                Judge
-              </button>
-            </div>
-          </>
-        )}
-      </div>
-    </Dialog>
+      {role ? (
+        <InquiryForm role={role} onBack={() => setRole(null)} />
+      ) : (
+        <div className="inquiry-choices">
+          <button type="button" onClick={() => setRole('sponsor')} className="btn action-button">
+            Sponsor
+          </button>
+          <button type="button" onClick={() => setRole('judge')} className="btn action-button">
+            Judge
+          </button>
+        </div>
+      )}
+    </HomeDialog>
   );
 }

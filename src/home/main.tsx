@@ -13,8 +13,8 @@ import { enableProductionWidgets } from './productionWidgets';
 import '../styles/style.css';
 import '../styles/gallery.css';
 import '../styles/touchups.css';
-import '../styles/hacker-interest.css';
 import '../styles/home.css';
+import '../styles/home-dialog.css';
 
 function HomePage() {
   const [dialog, setDialog] = useState<'interest' | 'inquiry' | null>(null);

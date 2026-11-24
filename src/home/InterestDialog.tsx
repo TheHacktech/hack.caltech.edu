@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Dialog } from '../components/Dialog';
+import { HomeDialog } from './HomeDialog';
 import { googleForm, mapFormFields, prefillForm, useGoogleForm } from '../components/googleForms';
 
 const form = googleForm('1FAIpQLScd0m1kB2O3BEX79iQ3hSpfhrPdpFlDCK_v5WfoPdeliGb54Q');
@@ -44,31 +44,19 @@ export function InterestDialog({ open, onClose }: InterestDialogProps) {
   }
 
   return (
-    <Dialog
+    <HomeDialog
       open={open}
       onClose={onClose}
       id="hacker-interest"
-      labelledBy="hacker-interest-title"
+      closeLabel="Close hacker interest form"
+      title={<>Hacktech <span>interest form</span></>}
       describedBy="hacker-interest-description"
     >
       <div className="hacker-interest-content">
-        <button
-          className="hacker-interest-close"
-          type="button"
-          aria-label="Close hacker interest form"
-          onClick={onClose}
-        >
-          ×
-        </button>
-        <header className="hacker-interest-intro">
-          <h2 id="hacker-interest-title">
-            Hacktech <span>interest form</span>
-          </h2>
-          <p id="hacker-interest-description">
-            Applications aren’t open yet. Submit your name, school, and email below, and we’ll notify you
-            as soon as full applications open.
-          </p>
-        </header>
+        <p id="hacker-interest-description">
+          Applications aren’t open yet. Submit your name, school, and email below, and we’ll notify you
+          as soon as full applications open.
+        </p>
         <form
           id="hacker-interest-form"
           action={form.submit}
@@ -93,7 +81,7 @@ export function InterestDialog({ open, onClose }: InterestDialogProps) {
                 />
               </div>
             ))}
-            <button type="submit" className="btn" disabled={state === 'sending'}>
+            <button type="submit" className="btn action-button" disabled={state === 'sending'}>
               {state === 'sending' ? 'Sending…' : 'Register interest'}
             </button>
           </div>
@@ -103,7 +91,7 @@ export function InterestDialog({ open, onClose }: InterestDialogProps) {
             </span>
             <h3>Thanks for your interest!</h3>
             <p>We’ll email you as soon as full applications open.</p>
-            <button type="button" className="btn" onClick={onClose}>
+            <button type="button" className="btn action-button" onClick={onClose}>
               Done
             </button>
           </div>
@@ -135,6 +123,6 @@ export function InterestDialog({ open, onClose }: InterestDialogProps) {
           </figure>
         )}
       </div>
-    </Dialog>
+    </HomeDialog>
   );
 }
