@@ -2,10 +2,19 @@ import { siteUrl } from '../components/siteUrl';
 import { useEffect, useRef, useState } from 'react';
 import { reducedMotionQuery, useMediaQuery } from '../components/useMediaQuery';
 
-const photos = Array.from({ length: 6 }, (_, index) => ({
-  src: siteUrl(`2025/previews/${index + 1}.webp`),
-  alt: `Hacktech Preview ${index + 1}`,
-}));
+const photos = [
+  { path: '2025/previews/1.webp', alt: 'Hackers gather in a lecture hall for a presentation.' },
+  { path: '2025/previews/2.webp', alt: 'Three teammates lean over a laptop together.' },
+  { path: '2025/previews/3.webp', alt: 'Four participants pose together on campus.' },
+  { path: '2026/gallery/check-in.webp', alt: 'Attendees sign in at the Hacktech welcome table.' },
+  { path: '2026/gallery/courtyard.webp', alt: 'Attendees gather outside a glass-fronted campus building.' },
+  { path: '2026/gallery/roundtable.webp', alt: 'Students chat around a table with their laptops open.' },
+  { path: '2026/gallery/team-demo.webp', alt: 'A participant presents to a group seated around a table.' },
+  { path: '2026/gallery/auditorium.webp', alt: 'An audience watches a presentation with the MLH logo on screen.' },
+  { path: '2026/gallery/award-team.webp', alt: 'A group poses beside the Best Use of K2 Think V2 banner.' },
+  { path: '2026/gallery/marquee.webp', alt: 'Illuminated HACKTECH letters stand beneath the courtyard arches.' },
+  { path: '2025/previews/6.webp', alt: 'The Hacktech 2025 logo fills a projector screen above the audience.' },
+];
 
 export function Gallery() {
   const gallery = useRef<HTMLDivElement>(null);
@@ -45,7 +54,7 @@ export function Gallery() {
           ref={gallery}
           className="gallery-container"
           role="region"
-          aria-label="Hacktech 2025 photos"
+          aria-label="Hacktech event photos"
           tabIndex={0}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
@@ -72,8 +81,9 @@ export function Gallery() {
           <div className="gallery-track">
             {photos.map((photo, index) => (
               <img
-                key={photo.src}
-                {...photo}
+                key={photo.path}
+                src={siteUrl(photo.path)}
+                alt={photo.alt}
                 width="1440"
                 height="810"
                 loading="lazy"
@@ -122,7 +132,7 @@ export function Gallery() {
           <div className="gallery-dots">
             {photos.map((photo, index) => (
               <button
-                key={photo.src}
+                key={photo.path}
                 type="button"
                 className={index === current ? 'gallery-dot active' : 'gallery-dot'}
                 aria-label={`Show photo ${index + 1}`}
