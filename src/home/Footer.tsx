@@ -64,7 +64,7 @@ export function Footer({ openInterest }: { openInterest: () => void }) {
               </li>
               <li>
                 <a href={sponsorPacket} className="footer-link" target="_blank" rel="noopener">
-                  2026 Sponsor Packet
+                  2027 Sponsor Packet
                 </a>
               </li>
               <li>

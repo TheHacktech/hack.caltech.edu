@@ -13,7 +13,7 @@ const forms = {
       email: 'entry.1403727519',
       inquiry: 'entry.1550975964',
     },
-    title: 'Sponsor Hacktech for our 2026 iteration!',
+    title: 'Sponsor Hacktech 2027!',
     companyLabel: 'Company/Organization Name',
     message: 'Inquiry',
   },
@@ -60,7 +60,7 @@ function InquiryForm({ role, onBack }: { role: Role; onBack: () => void }) {
               <li>Facilitate interaction between participants and your employees &amp; brand</li>
             </ul>
             <a href={sponsorPacket} className="packet-link" target="_blank" rel="noopener">
-              Click Here for our tentative 2026 Sponsorship Packet!
+              View the 2027 Sponsorship Packet
             </a>
           </div>
         ) : (
