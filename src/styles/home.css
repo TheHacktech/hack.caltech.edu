@@ -278,7 +278,10 @@
   gap: 24px;
   padding-block: 26px;
 }
-.sponsor-row--largeplus { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; padding-bottom: 38px; }
+/* Each logo spans two columns so an odd first logo can sit exactly between the pair below. */
+.sponsor-row--largeplus { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 56px; padding-bottom: 38px; }
+.sponsor-logo--largeplus { grid-column: span 2; }
+.sponsor-logo--largeplus:first-child:nth-last-child(odd) { grid-column: 2 / span 2; }
 .sponsor-row--large { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .sponsor-row--medium { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .sponsor-row--small { grid-template-columns: repeat(6, minmax(0, 1fr)); padding-top: 20px; }
@@ -503,7 +506,6 @@
   .home-page .stat-number { font-size: 3.8rem; }
   .home-page .stat-text { font-size: 1.4rem; }
   .sponsor-row { gap: 22px; padding-block: 22px; }
-  .sponsor-row--largeplus { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sponsor-row--large { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sponsor-row--medium { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sponsor-row--medium .sponsor-logo:last-child { grid-column: 1 / -1; width: 50%; justify-self: center; }
@@ -516,12 +518,14 @@
   .sponsor-row .sponsor-logo:nth-child(even) .sponsor-popover { left: auto; right: 0; transform: none; }
   .sponsor-row--medium .sponsor-logo:last-child .sponsor-popover { left: 50%; right: auto; transform: translateX(-50%); }
 }
+/* Count back from the last pair so popovers open inward for either roster size. */
+.sponsor-row--largeplus .sponsor-logo:nth-last-child(even) .sponsor-popover { left: 0; right: auto; transform: none; }
+.sponsor-row--largeplus .sponsor-logo:nth-last-child(odd) .sponsor-popover { right: 0; left: auto; transform: none; }
+.sponsor-row--largeplus .sponsor-logo:first-child:nth-last-child(odd) .sponsor-popover { left: 50%; right: auto; transform: translateX(-50%); }
 @media (max-width: 479px) {
   .hero-actions { gap: 14px; margin-top: 24px; }
   .home-page .hero-actions .btn { font-size: 1.4rem; height: 48px; padding-inline: 16px; }
   .notification-bubble { width: 20px; height: 20px; font-size: 12px; inset: -8px -9px auto auto; }
-  .sponsor-row--largeplus { grid-template-columns: 1fr; gap: 24px; }
-  .sponsor-logo--largeplus { --logo-width: 270px; --logo-height: 74px; }
 }
 @media (max-width: 359px) {
   .hero-actions { flex-direction: column; gap: 16px; }

@@ -24,13 +24,6 @@ interface Sponsor {
 // The sizes reflect how past partners are displayed on the homepage.
 export const sponsors: Sponsor[] = [
   {
-    name: 'OpenAI',
-    logo: 'organizers/companies/openai.svg',
-    url: 'https://openai.com/',
-    size: 'largeplus',
-    description: 'An AI research and deployment company that builds ChatGPT, Codex, and the OpenAI API.',
-  },
-  {
     name: 'Y Combinator',
     logo: 'organizers/companies/yc.png',
     url: 'https://www.ycombinator.com/',
