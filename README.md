@@ -34,8 +34,12 @@ The local preview uses the existing Google Forms endpoints. Leave actual submiss
 
 ## Hosting
 
-Open pull requests against `master`. GitHub Actions installs the locked dependencies, checks TypeScript, and builds all three pages. Every successful push to `master`, including a merged pull request, updates `compiled-prod` with the contents of `dist/`. The compiled branch has its own fast-forward history. It includes the site at its root, so a web server can pull it without installing Node.
+| Branch | What it contains | How it updates |
+| --- | --- | --- |
+| `master` | React and TypeScript source | Merge a pull request or push a change. Pull requests run the build. |
+| `staging` | Compiled website for GitHub Pages | Every successful push to `master` publishes the build and refreshes the [staging preview](https://thehacktech.github.io/hack.caltech.edu-v2/). |
+| `prod` | Compiled website for the Caltech cron to pull | In [Deploy production](https://github.com/TheHacktech/hack.caltech.edu-v2/actions/workflows/production.yml), select **Run workflow** on `master`. |
 
-The same files work at a domain root or under a GitHub Pages project path. Both `/live/` and `/organizer-interest/` have directory indexes, and the original `.html` addresses still work. The Caltech deployment uses its existing repository until its checkout and cron are switched separately.
+Review the staging preview before releasing. A manual production run builds the latest `master`. If another change lands during that build, the release stops so you can review the new revision and run it again. Each deployment commit records the source revision.
 
-GitHub Pages serves the root of `compiled-prod`. The publish job explicitly requests a Pages build after updating that branch.
+Both compiled branches serve the site from their root and support the clean page URLs and their original `.html` addresses. The Caltech production URL is [hack.caltech.edu](https://hack.caltech.edu/). Its existing cron deployment requires a separate cutover to start pulling `prod`.

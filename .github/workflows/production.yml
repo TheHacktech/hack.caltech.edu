@@ -1,0 +1,29 @@
+name: Deploy production
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/master'
+    uses: ./.github/workflows/build-static.yml
+
+  production:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v4
+        with:
+          name: website
+          path: release
+      - name: Publish prod
+        run: bash .github/scripts/publish-site.sh prod
