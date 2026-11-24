@@ -19,11 +19,17 @@ interface Sponsor {
   size: SponsorSize;
   description?: string;
   lightBackground?: boolean;
-  example?: boolean;
 }
 
-// Preview tier assignments. Confirm sponsors and example logos before the 2027 launch.
+// The sizes reflect how past partners are displayed on the homepage.
 export const sponsors: Sponsor[] = [
+  {
+    name: 'OpenAI',
+    logo: 'organizers/companies/openai.svg',
+    url: 'https://openai.com/',
+    size: 'largeplus',
+    description: 'An AI research and deployment company that builds ChatGPT, Codex, and the OpenAI API.',
+  },
   {
     name: 'Y Combinator',
     logo: 'organizers/companies/yc.png',
@@ -43,9 +49,16 @@ export const sponsors: Sponsor[] = [
     name: 'Listen Labs',
     logo: 'organizers/companies/listen.png',
     url: 'https://listenlabs.ai/',
-    size: 'large',
+    size: 'largeplus',
     description:
       'An AI research platform for interviewing customers and finding themes in their feedback.',
+  },
+  {
+    name: 'GitHub',
+    logo: 'organizers/companies/github.svg',
+    url: 'https://github.com/',
+    size: 'large',
+    description: 'A platform where developers host code, review changes, and build software together.',
   },
   {
     name: 'Rox',
@@ -104,19 +117,24 @@ export const sponsors: Sponsor[] = [
     description: 'A systematic investing business that brings together quantitative research and technology.',
   },
   {
-    name: 'GitHub',
-    logo: 'organizers/companies/github.svg',
-    url: 'https://github.com/',
+    name: 'Major League Hacking',
+    logo: 'organizers/companies/mlh.svg',
+    url: 'https://mlh.io/',
     size: 'small',
-    example: true,
   },
   {
-    name: 'Twelve Labs',
-    logo: '12labs.png',
-    url: 'https://www.twelvelabs.io/',
+    name: 'Orkes',
+    logo: 'orkes.png',
+    url: 'https://orkes.io/',
     size: 'small',
     lightBackground: true,
-    example: true,
+  },
+  {
+    name: 'Dryft',
+    logo: 'dryft.png',
+    url: 'https://www.godryft.com/',
+    size: 'small',
+    lightBackground: true,
   },
   {
     name: 'Wolfram',
@@ -124,15 +142,6 @@ export const sponsors: Sponsor[] = [
     url: 'https://www.wolfram.com/',
     size: 'small',
     lightBackground: true,
-    example: true,
-  },
-  {
-    name: 'Nord Security',
-    logo: 'nord.png',
-    url: 'https://nordsecurity.com/',
-    size: 'small',
-    lightBackground: true,
-    example: true,
   },
   {
     name: 'Sideshift',

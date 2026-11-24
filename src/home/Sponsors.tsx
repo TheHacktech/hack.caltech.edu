@@ -34,7 +34,6 @@ function SponsorLogo({ sponsor }: { sponsor: Sponsor }) {
       ref={tile}
       className={`sponsor-logo sponsor-logo--${sponsor.size}`}
       data-dismissed={dismissed}
-      data-example={sponsor.example || undefined}
       onPointerLeave={() => setDismissed(false)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setDismissed(false);
@@ -107,7 +106,11 @@ export function Sponsors() {
         </h2>
         <p className="section-text">
           Our sponsors are essential, providing support that helps us create an amazing event. We’re
-          grateful for their partnership! More sponsors to come!
+          grateful for their partnership!
+        </p>
+        <p className="section-text">
+          Below are some of the companies and organizations we’ve worked with in past years.
+          We’ll announce our 2027 sponsors here once they’re confirmed.
         </p>
         <div className="sponsor-tiers">
           {tiers.map((tier, index) => (
