@@ -37,3 +37,5 @@ The local preview uses the existing Google Forms endpoints. Leave actual submiss
 Open pull requests against `master`. GitHub Actions installs the locked dependencies, checks TypeScript, and builds all three pages. Every successful push to `master`, including a merged pull request, updates `compiled-prod` with the contents of `dist/`. The compiled branch has its own fast-forward history. It includes the site at its root, so a web server can pull it without installing Node.
 
 The same files work at a domain root or under a GitHub Pages project path. Both `/live/` and `/organizer-interest/` have directory indexes, and the original `.html` addresses still work. The Caltech deployment uses its existing repository until its checkout and cron are switched separately.
+
+GitHub Pages serves the root of `compiled-prod`. The publish job explicitly requests a Pages build after updating that branch.
