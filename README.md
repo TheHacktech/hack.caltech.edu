@@ -1,16 +1,16 @@
-# Hacktech website v2
+# Hacktech website
 
 The Hacktech homepage, live event guide, and organizer interest page, built with React, TypeScript, and Vite. Each route has its own HTML entry point, so the venue map code only loads on the live site.
 
-**GitHub Pages serves staging, and Caltech serves production.** Merging into `master` updates the team preview. Run **Deploy production** when that version is ready for the public site. [Staging preview](https://thehacktech.github.io/hack.caltech.edu-v2/) · [Live Caltech site](https://hack.caltech.edu/)
+**GitHub Pages serves staging, and Caltech serves production.** Merging into `master` updates the team preview. Production checks for a new release daily at 8:17 a.m. Pacific. A maintainer can also release manually at any time. [Staging preview](https://thehacktech.github.io/website/) · [Live Caltech site](https://hack.caltech.edu/)
 
 ## Make your first change
 
 1. Install Node.js 24, which includes npm. Clone this repo and create a branch from `master`. Here’s an example for a change to the FAQ.
 
    ```sh
-   git clone https://github.com/TheHacktech/hack.caltech.edu-v2.git
-   cd hack.caltech.edu-v2
+   git clone https://github.com/TheHacktech/website.git
+   cd website
    git switch -c update-faq origin/master
    npm ci
    npm run dev
@@ -36,7 +36,7 @@ The Hacktech homepage, live event guide, and organizer interest page, built with
 - `src/components/googleForms.ts` contains the shared submission code. Google Forms accepts the browser requests but does not provide a readable confirmation to the site.
 - `src/styles/` holds the original visual system and route-specific styles. `public/` contains the images, PDFs, manifest, and Apache rewrite rules.
 
-Sponsor sizes are grouped into separate rows (`largeplus`, `large`, `medium`, `small`). Mobile layouts wrap within each tier. Entries marked `example: true` are layout samples. Confirm the sponsor roster before launch. The MLH badge is the original 2026 asset, pending an approved 2027 badge.
+Sponsor sizes are grouped into separate rows (`largeplus`, `large`, `medium`, `small`). Mobile layouts wrap within each tier. The logos represent past partners. Update the note and roster together when announcing the 2027 sponsors. The MLH badge is the original 2026 asset, pending an approved 2027 badge.
 
 ## Branches and releases
 
@@ -44,14 +44,18 @@ Sponsor sizes are grouped into separate rows (`largeplus`, `large`, `medium`, `s
 | --- | --- | --- |
 | `master` | React and TypeScript source, images, and project configuration | Contributors merge their work here through pull requests. |
 | `staging` | Compiled files served by GitHub Pages | Every push to `master`, including a merged PR, triggers a build and publishes it here when it passes. |
-| `prod` | Compiled files served by the Caltech server | A maintainer manually runs **Deploy production**. |
+| `prod` | Compiled files served by the Caltech server | The daily release or a manual **Deploy production** run publishes here. |
 
-Make site edits on a branch based on `master`. Actions manages the files on `staging` and `prod`. If your merged edit is missing from staging, check the run for your commit under [Build and deploy staging](https://github.com/TheHacktech/hack.caltech.edu-v2/actions/workflows/build.yml), then check the [Pages deployment](https://github.com/TheHacktech/hack.caltech.edu-v2/actions?query=branch%3Astaging).
+Make site edits on a branch based on `master`. Actions manages the files on `staging` and `prod`. If your merged edit is missing from staging, check the run for your commit under [Build and deploy staging](https://github.com/TheHacktech/website/actions/workflows/build.yml), then check the [Pages deployment](https://github.com/TheHacktech/website/actions?query=branch%3Astaging).
 
-### Publish a production release
+### When changes go live
+
+At **8:17 a.m. Pacific** each day, Actions compares the source commit on `master` with the one recorded on `prod`. If they match, it skips the build and publish steps. If they differ, the automatic release proceeds only when `staging` has a successful build of that same commit. A change still building on staging waits for the next daily check or a manual release. GitHub may start scheduled runs a little late.
+
+### Release manually
 
 1. Review the latest changes on staging. The release workflow builds the latest `master`, so check whether anything else has merged since you tested.
-2. Open [Deploy production](https://github.com/TheHacktech/hack.caltech.edu-v2/actions/workflows/production.yml), choose **Run workflow**, select `master`, and run it.
+2. Open [Deploy production](https://github.com/TheHacktech/website/actions/workflows/production.yml), choose **Run workflow**, select `master`, and run it.
 3. Wait for the production job to finish. The newest deployment commit on `prod` records the source revision it built. If `master` advances during the build, the job stops. Review the newer staging version before running it again.
 4. Open the [live Caltech site](https://hack.caltech.edu/) after the next scheduled check. Every 30 seconds Portal compares the GitHub `prod` commit with the revision it serves. When they differ, it fetches and fast-forwards the checkout. Matching revisions require only a remote ref lookup. GitHub Actions performs the build.
 

@@ -1,6 +1,10 @@
 name: Deploy production
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 8 * * *'
+      timezone: America/Los_Angeles
 
 permissions:
   contents: read
@@ -10,8 +14,37 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  check:
     if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    outputs:
+      deploy: ${{ steps.check.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: prod
+      - name: Check whether to release
+        id: check
+        run: |
+          deploy=true
+          if [[ "$GITHUB_EVENT_NAME" == schedule ]]; then
+            source_revision='%(trailers:key=Source-commit,valueonly)'
+            if [[ "$(git log -1 --format="$source_revision")" == "$GITHUB_SHA" ]]; then
+              echo "Production already serves this revision."
+              deploy=false
+            else
+              git fetch --no-tags --depth=1 origin refs/heads/staging
+              if [[ "$(git log -1 --format="$source_revision" FETCH_HEAD)" != "$GITHUB_SHA" ]]; then
+                echo "This revision has not finished building on staging."
+                deploy=false
+              fi
+            fi
+          fi
+          echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: check
+    if: needs.check.outputs.deploy == 'true'
     uses: ./.github/workflows/build-static.yml
 
   production:

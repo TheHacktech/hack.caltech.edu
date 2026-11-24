@@ -8,7 +8,7 @@ const socialLinks = [
   { name: 'X', icon: 'logo-twitter', href: 'https://x.com/thehacktech?lang=en' },
   { name: 'Instagram', icon: 'logo-instagram', href: 'https://www.instagram.com/hacktechbycaltech/' },
   { name: 'Twitch', icon: 'logo-twitch', href: 'https://m.twitch.tv/teamhacktech/home' },
-  { name: 'GitHub', icon: 'logo-github', href: 'https://github.com/jsz-05/hack.caltech.edu' },
+  { name: 'GitHub', icon: 'logo-github', href: 'https://github.com/TheHacktech/website' },
 ];
 
 export function VenueMap() {
