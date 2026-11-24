@@ -18,7 +18,7 @@ const forms = {
     message: 'Inquiry',
   },
   judge: {
-    form: googleForm('1FAIpQLSfAk9FEG4FRKXO4A-rtqRN32fpWcjA8hGjIK3C41A'),
+    form: googleForm('1FAIpQLSfAk9FEG4FRKXO4A-rtqRN32xl9ZSW32fpWcjA8hGjIK3C41A'),
     entries: {
       name: 'entry.1393572412',
       company: 'entry.1417270478',
