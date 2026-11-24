@@ -3,10 +3,10 @@ export const eventDate = 'February 26–28, 2027';
 export const sponsorPacket = siteUrl('2027/hacktech-2027-sponsorship-packet.pdf');
 
 export const stats = [
-  { count: 10, suffix: '+', label: 'countries' },
+  { count: 5, suffix: '+', label: 'countries' },
   { count: 60, suffix: '+', label: 'universities' },
   { count: 400, suffix: '+', label: 'hackers' },
-  { count: 60, suffix: '+', label: 'prizes' },
+  { count: 30, suffix: '+', label: 'prizes' },
   { count: 36, suffix: '', label: 'hours' },
 ];
 
@@ -154,24 +154,24 @@ export const sponsors: Sponsor[] = [
 
 export const faq = [
   {
-    question: 'What is a Hackathon?',
+    question: 'What is a hackathon?',
     answer:
-      'In our Hackathon, you have 36 hours to code a product that regards one of our topics. Work by yourself or with a team of up to 4 people!',
+      'A hackathon is an event where you turn an idea into a working prototype and share what you built. At Hacktech, you have 36 hours to code a project that addresses one of our tracks. You can work on your own or in a team of up to four.',
   },
   {
     question: 'What is Hacktech?',
     answer:
-      "Hacktech is Caltech’s annual hackathon bringing together innovators to showcase the latest advancements in technology and coding. There's food, speakers, recruiters, and of course, tons of building!",
+      'Hacktech is Caltech’s annual student-run hackathon in Pasadena. Students spend the weekend building projects together. Between coding sessions, you can grab a meal, hear from speakers, and meet other hackers and recruiters.',
   },
   {
     question: 'How can I participate in Hacktech?',
     answer:
-      'To participate, you can register on our website! NOTE: Our 2025 event has wrapped up and applications for 2026 have also closed.',
+      'The full application for Hacktech 2027 opens on this website on December 5, 2026. Until then, click “I’m a Hacker!” at the top of the page to fill out the interest form. We’ll email you when applications open. To apply, complete the full application once it opens.',
   },
   {
     question: 'Where is the event held?',
     answer:
-      "Hacktech is held at Caltech's campus. This year we will likely be utilizing Avery House and the Annenberg Center for Information Science and Technology as our main venues. Please refer to our website and the map below for detailed directions and accommodation options when the time comes.",
+      'Hacktech takes place on Caltech’s campus in Pasadena. Our main venues for 2027 are Avery House and the Annenberg Center for Information Science and Technology. See the map below for directions.',
   },
   {
     question: 'Do I have to be in-person?',
@@ -181,12 +181,17 @@ export const faq = [
   {
     question: 'How much does it cost?',
     answer:
-      'Hacktech is free to attend! We will provide food, swag, lessons, and amazing memories! Travel reimbursement for 2026 is still relatively limited, and we will not be able to provide reimbursement to all participants. Unfortunately, partial reimbursement will not be provided this year.',
+      'Hacktech is free to attend. We provide food, swag, and workshops throughout the weekend.',
+  },
+  {
+    question: 'Is there travel reimbursement?',
+    answer:
+      'We have limited travel funding for 2027. If you’re selected, we’ll tell you the fixed amount you’ll receive. We decide awards case by case, up to $500. For example, a $200 award stays $200 regardless of your airfare. To receive it, you must attend Hacktech, check in on the first day, and demo your project.',
   },
   {
     question: 'Who can participate?',
     answer:
-      'For Hacktech 2026, all enrolled college undergraduate students (4-year or community college programs) are welcome! Note that you must be 18 or older as per institute requirements. No exceptions can be made.',
+      'We welcome enrolled undergraduate students at four-year colleges and community colleges. Graduate students are eligible only if they’re enrolled in a Caltech master’s or PhD program. Everyone must be at least 18 to sign the waiver and attend. There are no exceptions to the age requirement.',
   },
   {
     question: 'How many people are on a team?',

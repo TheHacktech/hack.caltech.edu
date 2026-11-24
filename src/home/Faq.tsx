@@ -27,7 +27,7 @@ export function Faq() {
         </h2>
         <p className="section-text">
           If you can't find your answer here, feel free to contact us via our email or social media! FAQ
-          last updated March 14th, 2025.
+          last updated November 24, 2026.
         </p>
         <div className="faq-list">
           {faq.map(({ question, answer }) => (
