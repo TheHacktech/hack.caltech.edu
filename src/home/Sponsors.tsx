@@ -107,8 +107,7 @@ export function Sponsors() {
         <p className="section-text">
           Our sponsors are essential, providing support that helps us create an amazing event. We’re
           grateful for their partnership!
-        </p>
-        <p className="section-text">
+          <br />
           Below are some of the companies and organizations we’ve worked with in past years.
           We’ll announce our 2027 sponsors here once they’re confirmed.
         </p>
