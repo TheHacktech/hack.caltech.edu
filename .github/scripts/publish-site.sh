@@ -17,7 +17,8 @@ done
 target="$RUNNER_TEMP/site-$branch"
 git fetch --depth=1 origin "refs/heads/$branch"
 git worktree add --detach "$target" FETCH_HEAD
-rsync -a --delete --exclude=.git release/site/ "$target/"
+# Bundle hashes can change without changing the length or timestamp of the HTML.
+rsync -a --checksum --delete --exclude=.git release/site/ "$target/"
 git -C "$target" add --all
 
 current=$(git ls-remote --exit-code origin refs/heads/master | cut -f1)
