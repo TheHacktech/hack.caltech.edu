@@ -120,7 +120,7 @@ export function Tracks() {
             Project. Whichever track you enter, you can also opt into one additional Hacktech award
             by choosing Best Use of AI, Best UI/UX, or Most Creative Tech Stack.
           </p>
-          <Gallery label="Hacktech 2026 award winners" photos={winnerPhotos} width={1440} height={960} />
+          <Gallery label="Hacktech 2026 award winners" photos={winnerPhotos} width={1440} height={810} />
           <p>
             Sponsors often offer separate tracks and awards you can compete in. We’ll announce any
             confirmed for 2027 soon, and each sponsor will manage and judge its own category.
