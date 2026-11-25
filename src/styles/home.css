@@ -99,7 +99,7 @@
   will-change: transform;
 }
 .hero-flare-entrance {
-  animation: hero-rise 1200ms cubic-bezier(0.22, 0.74, 0.29, 1) backwards;
+  animation: hero-rise 1100ms cubic-bezier(0.22, 0.74, 0.29, 1) backwards;
   animation-delay: var(--flare-delay);
 }
 @keyframes hero-rise {
