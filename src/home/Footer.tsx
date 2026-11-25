@@ -4,11 +4,10 @@ import { sponsorPacket } from './content';
 import { goToSection } from './sectionNavigation';
 
 const socialLinks = [
-  { name: 'Facebook', icon: 'logo-facebook', href: 'https://www.facebook.com/thehacktech/' },
-  { name: 'X', icon: 'logo-twitter', href: 'https://x.com/thehacktech?lang=en' },
   { name: 'Instagram', icon: 'logo-instagram', href: 'https://www.instagram.com/hacktechbycaltech/' },
-  { name: 'Twitch', icon: 'logo-twitch', href: 'https://m.twitch.tv/teamhacktech/home' },
   { name: 'GitHub', icon: 'logo-github', href: 'https://github.com/TheHacktech/hack.caltech.edu' },
+  { name: 'Twitter', icon: 'logo-twitter', href: 'https://x.com/thehacktech?lang=en' },
+  { name: 'Twitch', icon: 'logo-twitch', href: 'https://m.twitch.tv/teamhacktech/home' },
 ];
 
 export function VenueMap() {
