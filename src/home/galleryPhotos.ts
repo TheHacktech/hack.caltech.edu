@@ -12,10 +12,10 @@ export const eventPhotos = [
 ];
 
 export const winnerPhotos = [
+  { path: '2026/winners/ai.webp', alt: 'Best Use of AI winners at Hacktech 2026.' },
   { path: '2026/winners/creativity.webp', alt: 'Best Creativity Project winners at Hacktech 2026.' },
   { path: '2026/winners/data.webp', alt: 'Best Data “Not So Sexy” Project winners at Hacktech 2026.' },
   { path: '2026/winners/cybersecurity.webp', alt: 'Best Cybersecurity Project winners at Hacktech 2026.' },
-  { path: '2026/winners/ai.webp', alt: 'Best Use of AI winners at Hacktech 2026.' },
   { path: '2026/winners/gemma.webp', alt: 'MLH Best Use of Gemma winners at Hacktech 2026.' },
   { path: '2026/winners/elevenlabs.webp', alt: 'MLH Best Use of ElevenLabs winners at Hacktech 2026.' },
   { path: '2026/winners/solana.webp', alt: 'MLH Best Use of Solana winners at Hacktech 2026.' },
