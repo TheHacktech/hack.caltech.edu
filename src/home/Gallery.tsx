@@ -3,16 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 import { reducedMotionQuery, useMediaQuery } from '../components/useMediaQuery';
 
 const photos = [
+  { path: '2026/gallery/auditorium-screen.webp', alt: 'An audience watches a presentation with the Hacktech and MLH logos on screen.' },
+  { path: '2026/gallery/award-team.webp', alt: 'A group poses beside the Best Use of K2 Think V2 banner.' },
+  { path: '2026/gallery/check-in.webp', alt: 'Attendees sign in at the Hacktech welcome table.' },
+  { path: '2026/gallery/roundtable.webp', alt: 'Students chat around a table with their laptops open.' },
+  { path: '2026/gallery/marquee-lights.webp', alt: 'Illuminated HACKTECH letters stand beneath the courtyard arches.' },
+  { path: '2026/gallery/team-demo.webp', alt: 'A participant presents to a group seated around a table.' },
   { path: '2025/previews/1.webp', alt: 'Hackers gather in a lecture hall for a presentation.' },
   { path: '2025/previews/2.webp', alt: 'Three teammates lean over a laptop together.' },
   { path: '2025/previews/3.webp', alt: 'Four participants pose together on campus.' },
-  { path: '2026/gallery/check-in.webp', alt: 'Attendees sign in at the Hacktech welcome table.' },
-  { path: '2026/gallery/courtyard.webp', alt: 'Attendees gather outside a glass-fronted campus building.' },
-  { path: '2026/gallery/roundtable.webp', alt: 'Students chat around a table with their laptops open.' },
-  { path: '2026/gallery/team-demo.webp', alt: 'A participant presents to a group seated around a table.' },
-  { path: '2026/gallery/auditorium.webp', alt: 'An audience watches a presentation with the MLH logo on screen.' },
-  { path: '2026/gallery/award-team.webp', alt: 'A group poses beside the Best Use of K2 Think V2 banner.' },
-  { path: '2026/gallery/marquee.webp', alt: 'Illuminated HACKTECH letters stand beneath the courtyard arches.' },
   { path: '2025/previews/6.webp', alt: 'The Hacktech 2025 logo fills a projector screen above the audience.' },
 ];
 
