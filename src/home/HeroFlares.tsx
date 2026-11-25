@@ -42,7 +42,7 @@ export function HeroFlares() {
             const entranceOrder = index * 2 + (mirrored ? 1 : 0);
             const style = {
               '--flare-drop': `${drop * (mirrored ? 0.84 : 1)}px`,
-              '--flare-delay': `${360 + entranceOrder * 105}ms`,
+              '--flare-delay': `${260 + entranceOrder * 105}ms`,
             } as CSSProperties;
 
             return (

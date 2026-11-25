@@ -80,7 +80,7 @@
 }
 .hero-scene .hero-people {
   height: min(var(--hero-art-height), 100%);
-  animation-delay: 410ms;
+  animation-delay: 140ms;
 }
 .hero-flares {
   position: absolute;
