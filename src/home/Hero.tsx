@@ -1,6 +1,6 @@
 import { siteUrl } from '../components/siteUrl';
 import { useRef } from 'react';
-import { eventDate } from './content';
+import { eventDate, showHackerNotification } from './content';
 import { useHeroParallax } from './useHeroParallax';
 import { HeroFlares } from './HeroFlares';
 
@@ -33,9 +33,9 @@ export function Hero({ openInterest, openInquiry }: HeroProps) {
             >
               I'm a Hacker!
             </button>
-            <span className="notification-bubble" aria-hidden="true">
-              1
-            </span>
+            {showHackerNotification && (
+              <span className="notification-bubble" aria-hidden="true">1</span>
+            )}
           </div>
           <button
             type="button"

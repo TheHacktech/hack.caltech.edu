@@ -429,7 +429,7 @@
   transition: clip-path 230ms ease-out;
   pointer-events: none;
 }
-.btn.action-button:is(:hover, :focus-visible, :active)::before {
+.btn.action-button:is(:hover, :active)::before {
   transform: none;
   clip-path: circle(115% at 50% 60%);
 }

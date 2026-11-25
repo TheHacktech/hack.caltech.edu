@@ -1,5 +1,6 @@
 import { siteUrl } from '../components/siteUrl';
 export const eventDate = 'February 26–28, 2027';
+export const showHackerNotification = false;
 export const sponsorPacket = siteUrl('2027/hacktech-2027-sponsorship-packet.pdf');
 
 export const stats = [
