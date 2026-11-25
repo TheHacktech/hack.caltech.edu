@@ -2,20 +2,14 @@ import { siteUrl } from '../components/siteUrl';
 import { useEffect, useRef, useState } from 'react';
 import { reducedMotionQuery, useMediaQuery } from '../components/useMediaQuery';
 
-const photos = [
-  { path: '2026/gallery/auditorium-screen.webp', alt: 'An audience watches a presentation with the Hacktech and MLH logos on screen.' },
-  { path: '2026/gallery/award-team.webp', alt: 'A group poses beside the Best Use of K2 Think V2 banner.' },
-  { path: '2026/gallery/check-in.webp', alt: 'Attendees sign in at the Hacktech welcome table.' },
-  { path: '2025/previews/2.webp', alt: 'Three teammates lean over a laptop together.' },
-  { path: '2026/gallery/roundtable.webp', alt: 'Students chat around a table with their laptops open.' },
-  { path: '2026/gallery/marquee-lights.webp', alt: 'Illuminated HACKTECH letters stand beneath the courtyard arches.' },
-  { path: '2026/gallery/team-demo.webp', alt: 'A participant presents to a group seated around a table.' },
-  { path: '2025/previews/1.webp', alt: 'Hackers gather in a lecture hall for a presentation.' },
-  { path: '2025/previews/3.webp', alt: 'Four participants pose together on campus.' },
-  { path: '2025/previews/6.webp', alt: 'The Hacktech 2025 logo fills a projector screen above the audience.' },
-];
+interface GalleryProps {
+  label: string;
+  photos: { path: string; alt: string }[];
+  width: number;
+  height: number;
+}
 
-export function Gallery() {
+export function Gallery({ label, photos, width, height }: GalleryProps) {
   const gallery = useRef<HTMLDivElement>(null);
   const swipeStart = useRef<number | null>(null);
   const [current, setCurrent] = useState(0);
@@ -44,7 +38,7 @@ export function Gallery() {
     if (hovered || focused || !visible || !tabVisible || reducedMotion) return;
     const timer = window.setInterval(() => setCurrent((index) => (index + 1) % photos.length), 4000);
     return () => clearInterval(timer);
-  }, [hovered, focused, visible, tabVisible, reducedMotion, current]);
+  }, [hovered, focused, visible, tabVisible, reducedMotion, current, photos.length]);
 
   return (
     <div className="about-gallery">
@@ -53,7 +47,7 @@ export function Gallery() {
           ref={gallery}
           className="gallery-container"
           role="region"
-          aria-label="Hacktech event photos"
+          aria-label={label}
           tabIndex={0}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
@@ -77,14 +71,14 @@ export function Gallery() {
             swipeStart.current = null;
           }}
         >
-          <div className="gallery-track">
+          <div className="gallery-track" style={{ aspectRatio: `${width} / ${height}` }}>
             {photos.map((photo, index) => (
               <img
                 key={photo.path}
                 src={siteUrl(photo.path)}
                 alt={photo.alt}
-                width="1440"
-                height="810"
+                width={width}
+                height={height}
                 loading="lazy"
                 decoding="async"
                 className={index === current ? 'gallery-image active' : 'gallery-image'}

@@ -1,5 +1,6 @@
 import { AnimatedCount } from './AnimatedCount';
 import { Gallery } from './Gallery';
+import { eventPhotos } from './galleryPhotos';
 import { Tracks } from './Tracks';
 import { stats } from './content';
 
@@ -35,7 +36,7 @@ export function About() {
               <a href="https://hacktech-by-caltech-2026.devpost.com/project-gallery" target="_blank" rel="noopener">2026 Devpost</a>.
             </p>
           </div>
-          <Gallery />
+          <Gallery label="Hacktech event photos" photos={eventPhotos} width={1440} height={810} />
           <Tracks />
         </div>
       </div>

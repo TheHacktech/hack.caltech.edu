@@ -1,3 +1,5 @@
+import { Gallery } from './Gallery';
+import { winnerPhotos } from './galleryPhotos';
 import { useId, useState, type ReactNode } from 'react';
 import '../styles/tracks.css';
 
@@ -123,6 +125,7 @@ export function Tracks() {
             confirmed for 2027 soon, and each sponsor will manage and judge its own category.
           </p>
         </div>
+        <Gallery label="Hacktech 2026 award winners" photos={winnerPhotos} width={1440} height={960} />
       </section>
     </>
   );
